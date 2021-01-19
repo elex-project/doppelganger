@@ -7,7 +7,7 @@ plugins {
 
 group = "com.elex-project"
 version = "1.0-SNAPSHOT"
-description = ""
+description = "JDBC Helper"
 
 repositories {
 	maven {
@@ -37,7 +37,7 @@ tasks.jar {
 				"Implementation-Title" to project.name,
 				"Implementation-Version" to project.version,
 				"Implementation-Vendor" to "ELEX co.,pte.",
-				"Automatic-Module-Name" to "com.elex_project.${project.name}"
+				"Automatic-Module-Name" to "com.elex_project.doppelganger"
 		))
 	}
 }
@@ -69,20 +69,17 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			from(components["java"])
 			pom {
-				// todo
 				name.set(project.name)
 				description.set(project.description)
-				url.set("https://")
-				year.set("2021")
+				url.set("https://github.com/elex-project/doppelganger")
 				properties.set(mapOf(
-						"myProp" to "value",
-						"prop.with.dots" to "anotherValue"
+						"year" to "2021"
 				))
 				licenses {
 					license {
 						// todo
 						name.set("BSD 3-Clause License")
-						url.set("licenseUrl")
+						url.set("https://github.com/elex-project/doppelganger/blob/main/LICENSE")
 					}
 				}
 				developers {
@@ -94,9 +91,9 @@ publishing {
 				}
 				scm {
 					// todo
-					connection.set("scm:git:https://github.com/my-library.git")
-					developerConnection.set("scm:git:https://github.com/my-library.git")
-					url.set("https://github.com/my-library/")
+					connection.set("scm:git:https://github.com/elex-project/doppelganger.git")
+					developerConnection.set("scm:git:https://github.com/elex-project/doppelganger.git")
+					url.set("https://github.com/elex-project/doppelganger")
 				}
 			}
 		}
@@ -114,9 +111,9 @@ publishing {
 				password = project.findProperty("repo.password") as String
 			}
 		}
-		maven { //todo
+		maven { 
 			name = "mavenGithub"
-			url = uri("https://maven.pkg.github.com/elex-project/tmpl-java-library")
+			url = uri("https://maven.pkg.github.com/elex-project/doppelganger")
 			credentials {
 				username = project.findProperty("github.username") as String
 				password = project.findProperty("github.token") as String
