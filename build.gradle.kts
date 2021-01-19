@@ -6,8 +6,8 @@ plugins {
 }
 
 group = "com.elex-project"
-version = "1.0-SNAPSHOT"
-description = "JDBC Helper"
+version = "2.5.1"
+description = "Doppelgänger: Utilities for JDBC; with Advanced PreparedStatement & ResultSet"
 
 repositories {
 	maven {
@@ -32,7 +32,7 @@ configurations {
 }
 
 tasks.jar {
-	manifest { // todo
+	manifest {
 		attributes(mapOf(
 				"Implementation-Title" to project.name,
 				"Implementation-Version" to project.version,
@@ -69,7 +69,7 @@ publishing {
 		create<MavenPublication>("mavenJava") {
 			from(components["java"])
 			pom {
-				name.set(project.name)
+				name.set("Doppelganger")
 				description.set(project.description)
 				url.set("https://github.com/elex-project/doppelganger")
 				properties.set(mapOf(
@@ -77,7 +77,6 @@ publishing {
 				))
 				licenses {
 					license {
-						// todo
 						name.set("BSD 3-Clause License")
 						url.set("https://github.com/elex-project/doppelganger/blob/main/LICENSE")
 					}
@@ -90,7 +89,6 @@ publishing {
 					}
 				}
 				scm {
-					// todo
 					connection.set("scm:git:https://github.com/elex-project/doppelganger.git")
 					developerConnection.set("scm:git:https://github.com/elex-project/doppelganger.git")
 					url.set("https://github.com/elex-project/doppelganger")
@@ -123,7 +121,6 @@ publishing {
 }
 
 dependencies {
-	implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 	implementation("org.slf4j:slf4j-api:1.7.30")
 	implementation("org.jetbrains:annotations:20.1.0")
 
@@ -134,5 +131,7 @@ dependencies {
 	testImplementation("ch.qos.logback:logback-classic:1.2.3")
 	testImplementation("org.junit.jupiter:junit-jupiter:5.7.0")
 	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.0")
-}
 
+	testImplementation ("org.xerial:sqlite-jdbc:3.30.1")
+	testImplementation("org.mariadb.jdbc:mariadb-java-client:2.6.0")
+}

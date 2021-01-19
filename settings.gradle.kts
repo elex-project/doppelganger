@@ -1,2 +1,1 @@
-rootProject.name = "doppelganger"
-
+rootProject.name = "jdbc"
