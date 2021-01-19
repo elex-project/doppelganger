@@ -1,6 +1,6 @@
-# tmpl-java-library
+# Project Doppelgänger
 
-Template for Java library project
+JDBC Helper
 
 ---
 developed by Elex
